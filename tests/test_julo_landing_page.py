@@ -10,16 +10,21 @@ def driver():
     return get_chrome_driver()
 
 def test_navbar_on_homepage(driver):
+    driver.get('https://www.julo.co.id/')
+
     julo_landing_homepage = get_julo_landing_homepage(driver)
-    julo_landing_homepage.open()
+    julo_landing_homepage.check_homepage_is_open()
     list_of_navbar = julo_landing_homepage.get_list_of_navbar()
     list_of_navbar.assert_success(
         ['Home','Produk','Blog','Tentang','FAQ']
     )
 
+    driver.quit()
+
 def test_navbar_on_blog_page(driver):
+    driver.get('https://www.julo.co.id/')
+
     julo_landing_homepage = get_julo_landing_homepage(driver)
-    julo_landing_homepage.open()
     julo_landing_homepage.click_navbar_blog_button()
 
     julo_landing_blog_page = get_julo_landing_blog_page(driver)
@@ -29,3 +34,5 @@ def test_navbar_on_blog_page(driver):
         ['Beranda','Promo','Tips Keuangan','Gaya Hidup',
         'Karir & Pendidikan', 'Press Release', 'Tentang', 'Download']
     )
+
+    driver.quit()

@@ -5,12 +5,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 
 class JuloLandingHomepage(PageBase):
-    def open(self):
-        login_url = 'https://www.julo.co.id/'
-
-        self.logger.info('open {}'.format(login_url))
-        self.driver.get(login_url)
-
+    def check_homepage_is_open(self):
+        self.logger.info("check if the homepage is opened")
         self.wait.until(
             EC.visibility_of_element_located(
                 (By.XPATH, JuloLandingHomepageLocators.julo_logo)
