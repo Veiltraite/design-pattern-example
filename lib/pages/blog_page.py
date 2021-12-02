@@ -35,6 +35,22 @@ class JuloLandingBlogPage(PageBase):
 
         return ListOfNavbarAssertion(list_of_navbar_element)
 
+    def click_download_button(self):
+        self.logger.info('click navbar download button')
+        self.wait.until(
+            EC.visibility_of_element_located(
+                (By.XPATH, JuloLandingBlogPageLocators.download_button)
+            ),
+            message='element {} not visible'.format(
+                JuloLandingBlogPageLocators.download_button
+            )
+        )
+
+        navbar_download_element = self.driver.find_element_by_xpath(
+            JuloLandingBlogPageLocators.download_button
+        )
+        navbar_download_element.click()
+
 
 class ListOfNavbarAssertion(AssertionBase):
     def assert_success(self, expected_list):
