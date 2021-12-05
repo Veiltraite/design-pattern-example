@@ -26,6 +26,7 @@ def test_navbar_on_blog_page(driver):
     driver.get('https://www.julo.co.id/')
 
     julo_landing_homepage = get_julo_landing_homepage(driver)
+    julo_landing_homepage.check_homepage_is_open()
     julo_landing_homepage.click_navbar_blog_button()
 
     julo_landing_blog_page = get_julo_landing_blog_page(driver)
@@ -42,6 +43,7 @@ def test_download_button_direct_to_playstore(driver):
     driver.get('https://www.julo.co.id/')
 
     julo_landing_homepage = get_julo_landing_homepage(driver)
+    julo_landing_homepage.check_homepage_is_open()
     julo_landing_homepage.click_navbar_blog_button()
 
     julo_landing_blog_page = get_julo_landing_blog_page(driver)
@@ -52,5 +54,5 @@ def test_download_button_direct_to_playstore(driver):
     playstore_page.check_playstore_page_is_opened()
     app_title = playstore_page.get_app_title()
     app_title.assert_app_title('JULO Kredit Digital & Pinjaman')
-    
+
     driver.quit()
